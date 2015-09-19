@@ -1,0 +1,17 @@
+backend:
+  image: php:5.6.13-apache
+  ports:
+    - "80:80"
+  links: 
+    - db:mysql
+  volumes:
+    - ./docroot:/var/www/html:rw
+
+db:
+  image: tutum/mysql
+  ports:
+    - "33060:3306"
+  environment:
+    MYSQL_USER: root
+    MYSQL_PASS: root
+    ON_CREATE_DB: deliverapp
